@@ -41,7 +41,7 @@ def init_model_weights(model, model_type="lenet"):
     elif model_type == "vgg19":
         for layer in model.modules():
             if isinstance(layer, nn.Conv2d):
-                torch.nn.init.kaiming_normal_(model.weight, mode='fan_out', nonlinearity='relu')
+                torch.nn.init.kaiming_normal_(layer.weight, mode='fan_out', nonlinearity='relu')
                 if layer.bias is not None:
                     torch.nn.init.constant_(layer.bias, 0)
             elif isinstance(layer, nn.Linear):
